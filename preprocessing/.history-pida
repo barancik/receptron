@@ -1,0 +1,5 @@
+_T=20170407_16:34:58_3425	 cp ~/treceptron/preprocessing/*.py .
+_T=20170407_16:34:58_3425	 ls
+_T=20170407_16:35:03_3425	 cim preprocessing.py
+_T=20170407_16:35:29_3425	 vim preprocessing.py
+_T=20170407_16:35:41_3425	 vim word_pieces.py

@@ -1,0 +1,6 @@
+_T=20170407_16:37:27_3425	 cp ~/treceptron/data/split_and_filter.py .
+_T=20170407_16:37:37_3425	 cp ~/treceptron/data/*trigrams .
+_T=20170407_16:37:37_3425	 ls
+_T=20170407_16:37:57_3425	 rm slovakian_trigrams
+_T=20170407_16:37:59_3425	 rm not_slovakian_trigrams
+_T=20170407_16:38:01_3425	 ls
