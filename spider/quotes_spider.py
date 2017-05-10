@@ -13,22 +13,32 @@ def get_ingredience(ingredience):
 class QuotesSpider(scrapy.Spider):
     name = "labuznik"
     start_urls = [
-        # 'http://www.labuznik.cz/recept/pissaladiere/',
-        'http://www.labuznik.cz/recept/kakanek-neboli-kakan/',
+        'http://www.labuznik.cz/recept/pissaladiere/',
+        #'http://www.labuznik.cz/recept/kakanek-neboli-kakan/',
     ]
 
     def parse(self, response):
         # name = response.css('title::text').extract_first()
         recept = response.xpath('//div[@itemprop="recipeInstructions"]').extract_first()
-
+   #     keywords = response.css('head').select('//meta[@name="keywords"]/@content').extract_first()
+   #     rating = clean_recipe(response.xpath('//div[@itemprop="rating"]').extract_first())
         ingredience = response.xpath('//li[@itemprop="ingredients"]')
+ #       typ = clean_recipe(response.xpath('//b[@itemprop="recipeType"]').extract_first())
+
+        try:
+            c = response.xpath('//span[@class="nation"]').extract_first()
+            cuisine = clean_recipe(c)
+        except:
+            cuisine="NOT_FOUND"
+
        # import pdb; pdb.set_trace()
 
         if recept:
             yield {
                 'name': response.css('title::text').extract_first(),
-                 'ingredients': get_ingredience(ingredience),
+                'ingredients': get_ingredience(ingredience),
                 'recept': clean_recipe(recept),
+                'cuisine':cuisine,
             }
 
         next_pages = response.css('a::attr(href)').re(r'http://www.labuznik.cz/recept/.*')
